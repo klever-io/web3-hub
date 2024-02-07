@@ -1,1 +1,3 @@
-console.log('Hello World')
+import { PolkadotProvider } from '@/substrate/dot'
+
+export { PolkadotProvider }

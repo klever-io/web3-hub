@@ -4,6 +4,5 @@ src
 # files
 .eslintignore
 .gitignore
-.prettierrc.json
 tsconfig.json
 pnpm-lock.yaml
