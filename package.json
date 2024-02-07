@@ -1,0 +1,43 @@
+{
+  "name": "web3-hub",
+  "version": "0.0.1",
+  "description": "Make web3 more easily with agnostic library",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "lint": "eslint ./src",
+    "build": "tsc"
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "keywords": [
+    "blockchain",
+    "kleverchain",
+    "ethereum",
+    "bitcoin",
+    "tron",
+    "polkadot",
+    "kusama",
+    "web3",
+    "typescript"
+  ],
+  "author": "Klever (https://klever.io)",
+  "license": "MIT",
+  "contributors": [
+    {
+      "name": "Wilson Macedo",
+      "url": "https://github.com/wilmacedo"
+    }
+  ],
+  "private": false,
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.25.1",
+    "eslint": "^8.56.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.29.1",
+    "prettier": "^3.2.5",
+    "typescript": "^4.7.3"
+  }
+}
