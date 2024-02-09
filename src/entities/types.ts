@@ -3,5 +3,9 @@ export enum Network {
   KUSAMA = 'ksm',
 }
 
-export type Address = string | string[]
+export interface Address {
+  name?: string
+  address: string
+}
+
 export type Balance = string | BigInt

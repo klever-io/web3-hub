@@ -10,3 +10,5 @@ export interface SubstrateAccountWithMeta extends SubstrateAccount {
     source: string
   }
 }
+
+export type UnsubscribeFunction = () => void
