@@ -7,6 +7,9 @@ dependencies:
   '@polkadot/extension-dapp':
     specifier: ^0.46.6
     version: 0.46.6(@polkadot/api@10.11.2)(@polkadot/util-crypto@12.6.2)(@polkadot/util@12.6.2)
+  '@polkadot/util-crypto':
+    specifier: ^12.6.2
+    version: 12.6.2(@polkadot/util@12.6.2)
 
 devDependencies:
   '@antfu/eslint-config':

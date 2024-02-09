@@ -3,6 +3,8 @@ import type { Account, Address, Balance, Network } from '@/entities/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { connect } from './connect';
 import { getBalance } from './get-balance';
+import { signMessage } from './sign-message';
+import { signatureVerify } from './signature-verify';
 import type { SubscribeCallback } from './subscribe';
 import { subscribe } from './subscribe';
 import type { UnsubscribeFunction } from './types';
@@ -38,13 +40,17 @@ export class SubstrateProvider implements Provider {
     return subscribe(this.appName, callback)
   }
 
-  signMessage(message: string): Promise<string> {
-    return Promise.resolve(`message: ${message}`)
-  }
-
   async getBalance(address: Address): Promise<Balance> {
     const api = await this.createProvider()
 
     return getBalance(api, address)
+  }
+
+  async signMessage(address: Address, message: string): Promise<string> {
+    return signMessage(address, message)
+  }
+
+  signatureVerify(message: string, signature: string, address: string): boolean {
+    return signatureVerify(message, signature, address)
   }
 }

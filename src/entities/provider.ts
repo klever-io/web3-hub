@@ -1,7 +1,8 @@
-import type { Account, Balance } from '@/entities/types'
+import type { Account, Address, Balance } from '@/entities/types'
 
 export interface Provider {
   connect(): Promise<Account[]>
-  signMessage(message: string): Promise<string>
   getBalance(address: string): Promise<Balance>
+  signMessage(address: string, message: string): Promise<string>
+  signatureVerify(message: string, signature: string, address: Address): boolean
 }

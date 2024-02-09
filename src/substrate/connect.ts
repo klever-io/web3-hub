@@ -1,4 +1,4 @@
-import { NoAvailableAccountsError } from '@/errors/no-available-accounts-error';
+import { NoAvailableAccountsError } from '@/errors/no-accounts-available-error';
 import { NoProviderAvailableError } from '@/errors/no-provider-available-error';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import type { SubstrateAccountWithMeta } from './types';
