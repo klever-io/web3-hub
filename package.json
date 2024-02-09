@@ -1,6 +1,6 @@
 {
   "name": "web3-hub",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Make web3 more easily with agnostic library",
   "source": "src/index.ts",
   "exports": {
