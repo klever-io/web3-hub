@@ -3,9 +3,13 @@ export enum Network {
   KUSAMA = 'ksm',
 }
 
-export interface Address {
+export type Address = string
+export interface Account {
   name?: string
-  address: string
+  address: Address
 }
 
-export type Balance = string | BigInt
+export interface Balance {
+  free: number | string
+  frozen: number | string
+}

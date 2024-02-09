@@ -1,7 +1,8 @@
 import type { Provider } from '@/entities/provider';
-import type { Address, Network } from '@/entities/types';
+import type { Account, Address, Balance, Network } from '@/entities/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { connect } from './connect';
+import { getBalance } from './get-balance';
 import type { SubscribeCallback } from './subscribe';
 import { subscribe } from './subscribe';
 import type { UnsubscribeFunction } from './types';
@@ -24,7 +25,7 @@ export class SubstrateProvider implements Provider {
     return api
   }
 
-  async connect(): Promise<Address[]> {
+  async connect(): Promise<Account[]> {
     const accounts = await connect(this.appName)
 
     return accounts.map(account => ({
@@ -41,7 +42,9 @@ export class SubstrateProvider implements Provider {
     return Promise.resolve(`message: ${message}`)
   }
 
-  getBalance(): Promise<string> {
-    return Promise.resolve('0')
+  async getBalance(address: Address): Promise<Balance> {
+    const api = await this.createProvider()
+
+    return getBalance(api, address)
   }
 }
