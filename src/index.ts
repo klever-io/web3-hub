@@ -1,3 +1,4 @@
 import { PolkadotProvider } from '@/substrate/dot'
+import { KusamaProvider } from '@/substrate/ksm'
 
-export { PolkadotProvider }
+export { KusamaProvider, PolkadotProvider }
