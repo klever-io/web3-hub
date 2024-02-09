@@ -1,21 +1,20 @@
 import type { Provider } from '@/entities/provider'
 import type { Address, Network } from '@/entities/types'
-import { NotInjectedError } from '@/errors/not-injected-error'
 import { connect } from './connect'
 
 export class SubstrateProvider implements Provider {
   network: Network
-  sourceName = 'injectedWeb3'
+  appName: string
 
-  constructor(network: Network) {
+  constructor(network: Network, appName: string) {
     this.network = network
+    this.appName = appName
   }
 
-  connect(): Promise<Address> {
-    if (!(this.sourceName in window))
-      throw new NotInjectedError()
+  async connect(): Promise<Address> {
+    const accounts = await connect(this.appName)
 
-    return connect(this.network)
+    return accounts.map(account => account.address)
   }
 
   signMessage(message: string): Promise<string> {

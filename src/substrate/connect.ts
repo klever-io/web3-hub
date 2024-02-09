@@ -1,5 +1,17 @@
-import type { Network } from '@/entities/types'
+import { NoAvailableAccountsError } from '@/errors/no-available-accounts-error';
+import { NoProviderAvailableError } from '@/errors/no-provider-available-error';
+import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
+import type { SubstrateAccountWithMeta } from './types';
 
-export function connect(network: Network) {
-  return Promise.resolve(`${network} 0x123`)
+export async function connect(appName: string): Promise<SubstrateAccountWithMeta[]> {
+  const isInjected = await web3Enable(appName)
+  if (!isInjected || isInjected.length === 0)
+    throw new NoProviderAvailableError()
+
+  const accounts = await web3Accounts() as SubstrateAccountWithMeta[]
+  if (accounts.length === 0)
+    throw new NoAvailableAccountsError()
+
+  return accounts
 }
+
