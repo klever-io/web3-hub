@@ -1,6 +1,6 @@
-import type { Provider } from '@/entities/provider';
-import type { Account, Address, Balance, Network } from '@/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
+import type { Provider } from '../entities/provider';
+import type { Account, Address, Balance, Network } from '../types';
 import { connect } from './connect';
 import { getBalance } from './get-balance';
 import { signMessage } from './sign-message';

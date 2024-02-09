@@ -1,5 +1,5 @@
+import { SubstrateProvider } from '@/substrate';
 import { Network } from '@/types';
-import { SubstrateProvider } from '../provider';
 
 export class KusamaProvider extends SubstrateProvider {
   constructor(appName: string, rpcProvider: string) {

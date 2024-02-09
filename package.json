@@ -1,20 +1,18 @@
 {
   "name": "web3-hub",
-  "version": "0.2.2",
+  "version": "0.3.3",
   "description": "Make web3 more easily with agnostic library",
   "source": "src/index.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "module": "./dist/index.esm.js",
-      "default": "./dist/index.js"
-    },
-    "./types": {
-      "types": "./dist/types.d.ts"
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs",
+      "types": "./dist/index.d.ts"
     }
   },
   "type": "module",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs",
   "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
   "typesVersions": {
@@ -24,10 +22,13 @@
       ]
     }
   },
+  "files": [
+    "/dist"
+  ],
   "scripts": {
     "clean": "shx rm -rf ./dist",
     "lint": "eslint ./src",
-    "build": "pnpm clean && microbundle --visualize --tsconfig tsconfig.json --compress false --format esm,cjs",
+    "build": "pnpm clean && microbundle --visualize --tsconfig tsconfig.json --compress false --format cjs,esm",
     "test": "vitest run",
     "publish:latest": "pnpm build && npm publish --tag latest --access public",
     "build:test": "microbundle --visualise --tsconfig tsconfig.json"
