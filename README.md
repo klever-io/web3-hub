@@ -19,6 +19,6 @@ pnpm install web3-hub
 ```
 
 <!-- Markdown link & img dfn's -->
-[npm-image]: https://img.shields.io/npm/v/web3-hub.svg?style=flat
+[npm-image]: https://img.shields.io/npm/v/web3-hub.svg
 [npm-url]: https://www.npmjs.org/package/web3-hub
-[npm-downloads]: https://img.shields.io/npm/dm/web3-hub.svg?style=flat
+[npm-downloads]: https://img.shields.io/npm/dm/web3-hub.svg
