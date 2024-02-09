@@ -14,4 +14,3 @@ export async function connect(appName: string): Promise<SubstrateAccountWithMeta
 
   return accounts
 }
-
