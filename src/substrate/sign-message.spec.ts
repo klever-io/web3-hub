@@ -1,7 +1,7 @@
-import type { Address } from '@/entities/types';
 import { EmptyAddressError } from '@/errors/empty-address-error';
 import { EmptyMessageError } from '@/errors/empty-message-error';
 import { NoSignerAvailableError } from '@/errors/no-signer-available-error';
+import type { Address } from '@/types';
 import { web3FromAddress } from '@polkadot/extension-dapp';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { signMessage } from './sign-message';

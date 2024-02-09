@@ -1,4 +1,4 @@
-import type { Account, Address, Balance } from '@/entities/types'
+import type { Account, Address, Balance } from '@/types'
 
 export interface Provider {
   connect(): Promise<Account[]>

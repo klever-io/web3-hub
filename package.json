@@ -1,19 +1,46 @@
 {
   "name": "web3-hub",
-  "version": "0.0.2",
+  "version": "0.1.2",
   "description": "Make web3 more easily with agnostic library",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
+  "source": "src/index.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "module": "./dist/index.esm.js",
+      "default": "./dist/index.cjs.js"
+    },
+    "./types": {
+      "types": "./dist/types.d.ts"
+    }
+  },
+  "type": "module",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "types": "dist/index.d.ts",
+  "typesVersions": {
+    "*": {
+      "types": [
+        "dist/types.d.ts"
+      ]
+    }
+  },
   "scripts": {
     "clean": "shx rm -rf ./dist",
     "lint": "eslint ./src",
-    "build": "tsc",
+    "build": "pnpm clean && microbundle --visualize --tsconfig tsconfig.json --compress false --format esm,cjs",
     "test": "vitest run",
-    "publish:latest": "pnpm build && npm publish --tag latest --access public"
+    "publish:latest": "pnpm build && npm publish --tag latest --access public",
+    "build:test": "microbundle --visualise --tsconfig tsconfig.json"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
+  },
+  "bugs": {
+    "url": "https://github.com/klever-io/web3-hub/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/klever-io/web3-hub.git"
   },
   "keywords": [
     "blockchain",
@@ -38,6 +65,7 @@
     "eslint": "^8.56.0",
     "eslint-import-resolver-alias": "^1.1.2",
     "eslint-plugin-import": "^2.29.1",
+    "microbundle": "^0.15.1",
     "prettier": "^3.2.5",
     "shx": "^0.3.4",
     "typescript": "^4.7.3",

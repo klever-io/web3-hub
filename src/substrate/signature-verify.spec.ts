@@ -1,7 +1,7 @@
-import type { Address } from '@/entities/types';
 import { EmptyAddressError } from '@/errors/empty-address-error';
 import { EmptyMessageError } from '@/errors/empty-message-error';
 import { EmptySignatureError } from '@/errors/empty-signature-error';
+import type { Address } from '@/types';
 import { signatureVerify as substrateSignatureVerify } from '@polkadot/util-crypto';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { signatureVerify } from './signature-verify';

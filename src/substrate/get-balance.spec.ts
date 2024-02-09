@@ -1,5 +1,5 @@
-import type { Address } from '@/entities/types'
 import { EmptyAddressError } from '@/errors/empty-address-error'
+import type { Address } from '@/types'
 import { ApiPromise } from '@polkadot/api'
 import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { getBalance } from './get-balance'

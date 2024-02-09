@@ -4,6 +4,7 @@ export enum Network {
 }
 
 export type Address = string
+
 export interface Account {
   name?: string
   address: Address

@@ -1,4 +1,4 @@
-import { Network } from '@/entities/types';
+import { Network } from '@/types';
 import { SubstrateProvider } from '../provider';
 
 export class KusamaProvider extends SubstrateProvider {

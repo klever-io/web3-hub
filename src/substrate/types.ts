@@ -1,4 +1,4 @@
-import type { Address, Balance } from '@/entities/types'
+import type { Address, Balance } from '@/types'
 
 export interface SubstrateAccount {
   address: Address
