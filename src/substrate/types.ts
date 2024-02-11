@@ -19,3 +19,8 @@ export interface SubstrateBalance extends Balance {
   flags: string
   reserved: number
 }
+
+export interface SubstrateProviderProps {
+  appName: string
+  rpcProvider: string
+}

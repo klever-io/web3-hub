@@ -1,6 +1,7 @@
+import type { Network } from '@/networks';
+import type { Account, Address, Balance } from '@/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import type { Provider } from '../entities/provider';
-import type { Account, Address, Balance, Network } from '../types';
+import type { ProviderEntity } from '../entities/provider-entity';
 import { connect } from './connect';
 import { getBalance } from './get-balance';
 import { signMessage } from './sign-message';
@@ -9,7 +10,7 @@ import type { SubscribeCallback } from './subscribe';
 import { subscribe } from './subscribe';
 import type { UnsubscribeFunction } from './types';
 
-export class SubstrateProvider implements Provider {
+export class SubstrateProvider implements ProviderEntity {
   network: Network
   appName: string
   rpcProvider: string

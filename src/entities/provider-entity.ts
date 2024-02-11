@@ -1,6 +1,6 @@
 import type { Account, Address, Balance } from '@/types'
 
-export interface Provider {
+export interface ProviderEntity {
   connect(): Promise<Account[]>
   getBalance(address: string): Promise<Balance>
   signMessage(address: string, message: string): Promise<string>
