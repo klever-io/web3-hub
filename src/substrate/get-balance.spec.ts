@@ -1,3 +1,4 @@
+import { BalanceFetchError } from '@/errors'
 import { EmptyAddressError } from '@/errors/empty-address-error'
 import type { Address } from '@/types'
 import { ApiPromise } from '@polkadot/api'
@@ -38,6 +39,20 @@ describe('Get balance use case', () => {
     address = ''
 
     await expect(getBalance(api, address)).rejects.toThrow(EmptyAddressError)
+  })
+
+  it('should be able to throw error when api throws error', async () => {
+    const invalidApi: any = {
+      query: {
+        system: {
+          account: async () => {
+            throw new Error('unknown error')
+          },
+        },
+      },
+    }
+
+    await expect(getBalance(invalidApi, address)).rejects.toThrow(BalanceFetchError)
   })
 
   it('shoud be able to return mocked free balance', async () => {
