@@ -5,7 +5,7 @@ import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import type { SubstrateAccountWithMeta } from './types';
 
 export async function connect(appName: string): Promise<SubstrateAccountWithMeta[]> {
-  if ((window as any).injectedWeb3)
+  if (!(window as any).injectedWeb3)
     throw new NotInjectedError()
 
   const isInjected = await web3Enable(appName)

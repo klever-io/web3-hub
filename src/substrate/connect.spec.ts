@@ -1,3 +1,4 @@
+import { NotInjectedError } from '@/errors';
 import { NoAvailableAccountsError } from '@/errors/no-accounts-available-error';
 import { NoProviderAvailableError } from '@/errors/no-provider-available-error';
 import * as extension from '@polkadot/extension-dapp';
@@ -15,7 +16,14 @@ describe('Connect wallet use case', () => {
   beforeEach(() => {
     vi.resetAllMocks()
 
-    appName = 'Web3 Hub'
+    appName = 'Web3 Hub';
+    (window as any).injectedWeb3 = {}
+  })
+
+  it('should be able to throw error when window dont have web3 object', async () => {
+    delete (window as any).injectedWeb3
+
+    await expect(connect(appName)).rejects.toThrow(NotInjectedError)
   })
 
   it('should be able to throw error when have no providers', async () => {
