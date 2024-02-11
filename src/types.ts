@@ -1,7 +1,4 @@
-export enum Network {
-  POLKADOT = 'dot',
-  KUSAMA = 'ksm',
-}
+import type { SubstrateProviderProps } from './substrate/types'
 
 export type Address = string
 
@@ -14,3 +11,5 @@ export interface Balance {
   free: number | string
   frozen: number | string
 }
+
+export type ProviderBuilderProps = SubstrateProviderProps
