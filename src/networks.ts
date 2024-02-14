@@ -11,11 +11,17 @@ export const Networks = {
     name: 'Kusama',
     decimals: 12,
   },
+  ada: {
+    id: 3,
+    name: 'Cardano',
+    decimals: 15, // review
+  }
 }
 
 export enum Network {
   POLKADOT = 'dot',
   KUSAMA = 'ksm',
+  CARDANO = 'ada'
 }
 
 export type NetworkKey = keyof typeof Networks
