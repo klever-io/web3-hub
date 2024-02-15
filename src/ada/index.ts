@@ -1,11 +1,12 @@
 import { MissingPropsError } from '@/errors/missing-props-error';
 import type { ProviderEntity } from '@/entities/provider-entity';
 import type { Account, Address, Balance } from '@/types';
+import type { CardanoProviderProps } from './types';
 import { connect } from '@/ada/connect';
 
 export class CardanoProvider implements ProviderEntity {
   appName: string
-  constructor(appName: string) {
+  constructor({ appName }: CardanoProviderProps) {
     this.appName = appName
 
     if (!appName)
