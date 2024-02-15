@@ -4,6 +4,7 @@ import type { NetworkData, NetworkKey } from './networks';
 import { getNetworkKeyById, isValidNetwork } from './networks';
 import { PolkadotProvider } from './substrate/dot';
 import { KusamaProvider } from './substrate/ksm';
+import { CardanoProvider } from './ada';
 import type { ProviderBuilderProps } from './types';
 
 export class Provider {
@@ -25,6 +26,7 @@ export class Provider {
     return {
       dot: PolkadotProvider,
       ksm: KusamaProvider,
+      ada: CardanoProvider,
     }
   }
 

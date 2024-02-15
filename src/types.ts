@@ -1,3 +1,4 @@
+import type { CardanoProviderProps } from './ada/types'
 import type { SubstrateProviderProps } from './substrate/types'
 
 export type Address = string
@@ -12,4 +13,4 @@ export interface Balance {
   frozen: number | string
 }
 
-export type ProviderBuilderProps = SubstrateProviderProps
+export type ProviderBuilderProps = SubstrateProviderProps | CardanoProviderProps
