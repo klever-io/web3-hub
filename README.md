@@ -6,7 +6,7 @@
 
 ## Features
 
-- 🔌 All supported networks are in [types.ts](https://github.com/klever-io/web3-hub/blob/main/src/types.ts)
+- 🔌 All supported networks are in [networks.ts](https://github.com/klever-io/web3-hub/blob/main/src/networks.ts)
 
 ## Supported Chains
 

@@ -1,7 +1,7 @@
+import type { ProviderEntity } from '@/entities/provider-entity';
 import type { Network } from '@/networks';
 import type { Account, Address, Balance } from '@/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
-import type { ProviderEntity } from '../entities/provider-entity';
 import { connect } from './connect';
 import { getBalance } from './get-balance';
 import { signMessage } from './sign-message';
