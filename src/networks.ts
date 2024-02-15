@@ -15,13 +15,13 @@ export const Networks = {
     id: 3,
     name: 'Cardano',
     decimals: 15, // review
-  }
+  },
 }
 
 export enum Network {
   POLKADOT = 'dot',
   KUSAMA = 'ksm',
-  CARDANO = 'ada'
+  CARDANO = 'ada',
 }
 
 export type NetworkKey = keyof typeof Networks
