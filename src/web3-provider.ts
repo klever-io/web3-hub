@@ -7,7 +7,7 @@ import { KusamaProvider } from './substrate/ksm';
 import { CardanoProvider } from './ada';
 import type { ProviderBuilderProps } from './types';
 
-export class Provider {
+export class Web3Provider {
   network: NetworkKey
 
   constructor(network: NetworkKey | NetworkData) {
