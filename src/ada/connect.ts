@@ -1,7 +1,7 @@
 import { NotInjectedError } from '@/errors';
 import { NoAvailableAccountsError } from '@/errors/no-accounts-available-error';
 import { NoProviderAvailableError } from '@/errors/no-provider-available-error';
-import { web3Window } from '@/web3-provider';
+import { web3Window } from '@/types';
 import { availableWallets } from './available-wallets';
 import type { CardanoUsedAddress } from './types';
 

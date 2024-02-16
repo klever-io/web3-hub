@@ -7,7 +7,7 @@ import { getNetworkKeyById, isValidNetwork } from './networks';
 import { PolkadotProvider } from './substrate/dot';
 import { KusamaProvider } from './substrate/ksm';
 import type { SubstrateProviderProps } from './substrate/types';
-import type { ProviderBuilderProps, Web3Window } from './types';
+import type { ProviderBuilderProps } from './types';
 
 export class Web3Provider {
   network: NetworkKey
@@ -38,5 +38,3 @@ export class Web3Provider {
     }
   }
 }
-
-export const web3Window = (window as Web3Window)

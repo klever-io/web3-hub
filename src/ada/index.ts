@@ -1,7 +1,7 @@
-import { connect } from '@/ada/connect';
 import type { ProviderEntity } from '@/entities/provider-entity';
 import type { Account, Address, Balance } from '@/types';
 import { CardanoWallet } from './available-wallets';
+import { connect } from './connect';
 import type { CardanoProviderProps } from './types';
 
 export class CardanoProvider implements ProviderEntity {

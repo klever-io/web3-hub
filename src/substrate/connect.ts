@@ -1,11 +1,12 @@
 import { NotInjectedError } from '@/errors';
 import { NoAvailableAccountsError } from '@/errors/no-accounts-available-error';
 import { NoProviderAvailableError } from '@/errors/no-provider-available-error';
+import { web3Window } from '@/types';
 import { web3Accounts, web3Enable } from '@polkadot/extension-dapp';
 import type { SubstrateAccountWithMeta } from './types';
 
 export async function connect(appName: string): Promise<SubstrateAccountWithMeta[]> {
-  if (!(window as any).injectedWeb3)
+  if (!web3Window.injectedWeb3)
     throw new NotInjectedError()
 
   const isInjected = await web3Enable(appName)
