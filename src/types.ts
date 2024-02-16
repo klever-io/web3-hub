@@ -1,4 +1,5 @@
 import type { CardanoProviderProps } from './ada/types'
+import type { NetworkKey } from './networks'
 import type { SubstrateProviderProps } from './substrate/types'
 
 export type Address = string
@@ -13,7 +14,7 @@ export interface Balance {
   frozen: number | string
 }
 
-export type ProviderBuilderProps = SubstrateProviderProps | CardanoProviderProps
+export type ProviderBuilderProps<T extends NetworkKey> = T extends 'dot' | 'ksm' ? SubstrateProviderProps : T extends 'ada' ? CardanoProviderProps : never;
 
 export type Web3Window = {
   injectedWeb3: any

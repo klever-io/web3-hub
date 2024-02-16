@@ -1,11 +1,13 @@
+import { CardanoProvider } from './ada';
+import type { CardanoProviderProps } from './ada/types';
 import type { ProviderEntity } from './entities/provider-entity';
 import { InvalidNetworkError } from './errors/invalid-network-error';
 import type { NetworkData, NetworkKey } from './networks';
 import { getNetworkKeyById, isValidNetwork } from './networks';
 import { PolkadotProvider } from './substrate/dot';
 import { KusamaProvider } from './substrate/ksm';
-import { CardanoProvider } from './ada';
-import type { ProviderBuilderProps } from './types';
+import type { SubstrateProviderProps } from './substrate/types';
+import type { ProviderBuilderProps, Web3Window } from './types';
 
 export class Web3Provider {
   network: NetworkKey
@@ -22,17 +24,19 @@ export class Web3Provider {
     this.network = network
   }
 
-  private getAvailableProviders() {
-    return {
-      dot: PolkadotProvider,
-      ksm: KusamaProvider,
-      ada: CardanoProvider,
+  // TODO: Improve props type to avoid generic for vanilla javascript users
+  build<T extends NetworkKey>(props: ProviderBuilderProps<T>): ProviderEntity {
+    switch (this.network) {
+      case 'dot':
+        return new PolkadotProvider(props as SubstrateProviderProps)
+      case 'ksm':
+        return new KusamaProvider(props as SubstrateProviderProps)
+      case 'ada':
+        return new CardanoProvider(props as CardanoProviderProps)
+      default:
+        throw new InvalidNetworkError()
     }
   }
-
-  build(props: ProviderBuilderProps): ProviderEntity {
-    const Provider = this.getAvailableProviders()[this.network]
-
-    return new Provider(props)
-  }
 }
+
+export const web3Window = (window as Web3Window)
