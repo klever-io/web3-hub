@@ -14,3 +14,8 @@ export interface Balance {
 }
 
 export type ProviderBuilderProps = SubstrateProviderProps | CardanoProviderProps
+
+export type Web3Window = {
+  injectedWeb3: any
+  cardano: any
+} & Window & typeof globalThis

@@ -1,21 +1,24 @@
-import { MissingPropsError } from '@/errors/missing-props-error';
+import { connect } from '@/ada/connect';
 import type { ProviderEntity } from '@/entities/provider-entity';
 import type { Account, Address, Balance } from '@/types';
+import { CardanoWallet } from './available-wallets';
 import type { CardanoProviderProps } from './types';
-import { connect } from '@/ada/connect';
 
 export class CardanoProvider implements ProviderEntity {
-  appName: string
-  constructor({ appName }: CardanoProviderProps) {
-    this.appName = appName
+  wallet?: CardanoWallet
 
-    if (!appName)
-      throw new MissingPropsError()
+  constructor({ wallet }: CardanoProviderProps) {
+    if (wallet)
+      this.wallet = CardanoWallet[wallet.toUpperCase() as keyof typeof CardanoWallet]
   }
 
   async connect(): Promise<Account[]> {
-    const accounts = await connect(this.appName)
-    return accounts;
+    const accounts = await connect(this.wallet)
+
+    return accounts.map((account, index) => ({
+      name: `Account #${index}`,
+      address: account,
+    }))
   }
 
   async getBalance(address: Address): Promise<Balance> {

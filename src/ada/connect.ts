@@ -1,28 +1,30 @@
 import { NotInjectedError } from '@/errors';
 import { NoAvailableAccountsError } from '@/errors/no-accounts-available-error';
 import { NoProviderAvailableError } from '@/errors/no-provider-available-error';
-import type { Account } from '@/types';
-import type { CardanoInitializedExtension, CardanoWeb } from '@/ada/types';
+import { web3Window } from '@/web3-provider';
+import { availableWallets } from './available-wallets';
+import type { CardanoUsedAddress } from './types';
 
-const CardanoWindow: CardanoWeb = (window as any)
-
-export async function connect(appName: string): Promise<Account[]> {
-  if (!(window as any).cardano)
+export async function connect(wallet?: string): Promise<CardanoUsedAddress[]> {
+  if (!web3Window.cardano)
     throw new NotInjectedError()
 
-  const isInjected = CardanoWindow.cardano[appName].name === appName
-  if (!isInjected)
+  let injectedWallet = wallet
+  if (typeof injectedWallet === 'undefined') {
+    for (const availableWallet of availableWallets) {
+      if (web3Window.cardano[availableWallet])
+        injectedWallet = availableWallet
+    }
+  }
+
+  if (typeof injectedWallet === 'undefined')
     throw new NoProviderAvailableError()
 
-  const api: CardanoInitializedExtension = await CardanoWindow.cardano[appName].enable()
+  await web3Window.cardano[injectedWallet].enable()
 
-  const rawAccounts = await api.getUsedAddresses()
-  if (rawAccounts.length === 0)
+  const usedAddresses: CardanoUsedAddress[] = await web3Window.cardano.getUsedAddresses()
+  if (usedAddresses.length === 0)
     throw new NoAvailableAccountsError()
 
-  const accounts = rawAccounts.map(account => ({
-    address: account,
-  }))
-
-  return accounts
+  return usedAddresses
 }
