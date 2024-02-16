@@ -1,6 +1,7 @@
 import { NotInjectedError } from '@/errors';
 import { NoAvailableAccountsError } from '@/errors/no-accounts-available-error';
 import { NoProviderAvailableError } from '@/errors/no-provider-available-error';
+import { web3Window } from '@/types';
 import * as extension from '@polkadot/extension-dapp';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { connect } from './connect';
@@ -17,11 +18,11 @@ describe('Connect wallet use case', () => {
     vi.resetAllMocks()
 
     appName = 'Web3 Hub';
-    (window as any).injectedWeb3 = {}
+    web3Window.injectedWeb3 = {}
   })
 
   it('should be able to throw error when window dont have web3 object', async () => {
-    delete (window as any).injectedWeb3
+    delete web3Window.injectedWeb3
 
     await expect(connect(appName)).rejects.toThrow(NotInjectedError)
   })
