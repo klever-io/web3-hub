@@ -16,6 +16,7 @@ export interface Balance {
 
 export type ProviderBuilderProps<T extends NetworkKey> = T extends 'dot' | 'ksm' ? SubstrateProviderProps : T extends 'ada' ? CardanoProviderProps : never;
 
+// TODO: Add type and functions of injected providers
 export type Web3Window = {
   injectedWeb3: any
   cardano: any

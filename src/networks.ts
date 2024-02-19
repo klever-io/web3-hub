@@ -5,16 +5,19 @@ export const Networks = {
     id: 1,
     name: 'Polkadot',
     decimals: 10,
+    minStakeAmount: 1,
   },
   ksm: {
     id: 2,
     name: 'Kusama',
     decimals: 12,
+    minStakeAmount: 0.1,
   },
   ada: {
     id: 3,
     name: 'Cardano',
     decimals: 5,
+    minStakeAmount: 1, // TODO: Validate min stake amount
   },
 }
 

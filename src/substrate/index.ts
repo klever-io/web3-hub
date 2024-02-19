@@ -4,6 +4,7 @@ import type { Account, Address, Balance } from '@/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
 import { connect } from './connect';
 import { getBalance } from './get-balance';
+import { joinPool } from './join-pool';
 import { signMessage } from './sign-message';
 import { signatureVerify } from './signature-verify';
 import type { SubscribeCallback } from './subscribe';
@@ -53,5 +54,11 @@ export class SubstrateProvider implements ProviderEntity {
 
   signatureVerify(message: string, signature: string, address: string): boolean {
     return signatureVerify(message, signature, address)
+  }
+
+  async joinPool(address: string, poolId: number, amount: number): Promise<string> {
+    const api = await this.createProvider()
+
+    return joinPool(this.network, api, address, poolId, amount)
   }
 }

@@ -22,14 +22,18 @@ export class CardanoProvider implements ProviderEntity {
   }
 
   async getBalance(address: Address): Promise<Balance> {
-    throw new Error('Not yet implemented.')
+    throw new Error('Method not implemented.')
   }
 
   async signMessage(address: Address, message: string): Promise<string> {
-    throw new Error('Not yet implemented.')
+    throw new Error('Method not implemented.')
   }
 
   signatureVerify(message: string, signature: string, address: string): boolean {
-    throw new Error('Not yet implemented.')
+    throw new Error('Method not implemented.')
+  }
+
+  async joinPool(address: string, poolId: number, amount: number): Promise<string> {
+    throw new Error('Method not implemented.');
   }
 }
