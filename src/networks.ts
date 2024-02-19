@@ -14,7 +14,7 @@ export const Networks = {
   ada: {
     id: 3,
     name: 'Cardano',
-    decimals: 15, // TODO: Check this value
+    decimals: 5,
   },
 }
 
