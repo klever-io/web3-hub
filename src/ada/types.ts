@@ -5,3 +5,9 @@ export interface CardanoProviderProps {
 }
 
 export type CardanoUsedAddress = string
+
+export interface ApiPromise {
+  getBalance: (address: string) => Promise<string>
+  getUsedAddresses: () => Promise<string[]>
+  getUnusedAddresses: () => Promise<string[]>
+}
