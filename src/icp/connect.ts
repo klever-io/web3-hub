@@ -5,7 +5,7 @@ import type { PrincipalAddress } from './types';
 
 export async function connect(): Promise<PrincipalAddress> {
   try {
-    const hasConnected = await web3Window.ic.requestConnect();
+    const hasConnected = await web3Window.ic.plug.requestConnect();
     if (!hasConnected)
       throw new NoProviderAvailableError()
 
