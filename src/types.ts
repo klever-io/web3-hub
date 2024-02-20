@@ -20,6 +20,7 @@ export type ProviderBuilderProps<T extends NetworkKey> = T extends 'dot' | 'ksm'
 export type Web3Window = {
   injectedWeb3: any
   cardano: any
+  ic: any
 } & Window & typeof globalThis
 
 export const web3Window = (window as Web3Window)

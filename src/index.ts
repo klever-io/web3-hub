@@ -1,4 +1,5 @@
 export * from './ada/index'
+export * from './icp/index'
 export * from './networks'
 export * from './substrate/dot/index'
 export * from './substrate/ksm/index'
