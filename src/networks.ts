@@ -22,7 +22,7 @@ export const Networks = {
   icp: {
     id: 4,
     name: 'Internet Computer',
-    decimals: 5, // TODO: Validate decimals
+    decimals: 8,
     minStakeAmount: 1, // TODO: Validate min stake amount
   },
 }
