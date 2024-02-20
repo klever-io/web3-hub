@@ -19,12 +19,19 @@ export const Networks = {
     decimals: 5,
     minStakeAmount: 1, // TODO: Validate min stake amount
   },
+  icp: {
+    id: 4,
+    name: 'Internet Computer',
+    decimals: 5, // TODO: Validate decimals
+    minStakeAmount: 1, // TODO: Validate min stake amount
+  },
 }
 
 export enum Network {
   POLKADOT = 'dot',
   KUSAMA = 'ksm',
   CARDANO = 'ada',
+  INTERNET_COMPUTER = 'icp',
 }
 
 export type NetworkKey = keyof typeof Networks
