@@ -2,6 +2,7 @@ import type { ProviderEntity } from '@/entities/provider-entity';
 import type { Network } from '@/networks';
 import type { Account, Address, Balance } from '@/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
+import { bondExtra } from './bond-extra';
 import { connect } from './connect';
 import { getBalance } from './get-balance';
 import { joinPool } from './join-pool';
@@ -60,5 +61,11 @@ export class SubstrateProvider implements ProviderEntity {
     const api = await this.createProvider()
 
     return joinPool(this.network, api, address, poolId, amount)
+  }
+
+  async bondExtra(address: string, amount: number): Promise<string> {
+    const api = await this.createProvider()
+
+    return bondExtra(this.network, api, address, amount)
   }
 }

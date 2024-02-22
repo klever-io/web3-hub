@@ -3,6 +3,7 @@ import type { NetworkKey } from './networks'
 import type { SubstrateProviderProps } from './substrate/types'
 
 export type Address = string
+export type Hash = string
 
 export interface Account {
   name?: string
