@@ -1,4 +1,3 @@
-import { InvalidNetworkError } from '@/errors/invalid-network-error'
 import { UserRejectedError } from '@/errors/user-rejected-error'
 import { Networks } from '@/networks'
 import { web3FromAddress } from '@polkadot/extension-dapp'
@@ -20,11 +19,6 @@ const amount = 100
 const validHash = 'hash123'
 
 describe('Bond Extra value case', () => {
-  it('should throw error for invalid password', async () => {
-    const api: any = { tx: { nominationPools: { bondExtra: vi.fn() } } }
-    await expect(bondExtra('invalidNetwork' as any, api, address, amount)).rejects.toThrow(InvalidNetworkError)
-  })
-
   it('should call bondExtra function with correct params', async () => {
     const injector = { signer: 'signer' };
     (web3FromAddress as any).mockResolvedValue(injector)

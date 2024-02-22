@@ -7,4 +7,5 @@ export interface ProviderEntity {
   signatureVerify(message: string, signature: string, address: Address): boolean
   joinPool(address: Address, poolId: number, amount: number): Promise<Hash>
   bondExtra(address: Address, amount: number): Promise<Hash>
+  claim(address: Address): Promise<Hash>
 }

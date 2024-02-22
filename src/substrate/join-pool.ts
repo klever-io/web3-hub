@@ -1,4 +1,3 @@
-import { InvalidNetworkError } from '@/errors/invalid-network-error';
 import { MinAmountError } from '@/errors/min-amount-error';
 import { UserRejectedError } from '@/errors/user-rejected-error';
 import type { Network } from '@/networks';
@@ -8,10 +7,6 @@ import { web3FromAddress } from '@polkadot/extension-dapp';
 
 export async function joinPool(network: Network, api: ApiPromise, address: string, poolId: number, amount: number) {
   try {
-    const selectedNetwork = Networks[network]
-    if (!selectedNetwork)
-      throw new InvalidNetworkError()
-
     if (amount < Networks[network].minStakeAmount)
       throw new MinAmountError()
 
