@@ -36,4 +36,12 @@ export class CardanoProvider implements ProviderEntity {
   async joinPool(address: string, poolId: number, amount: number): Promise<string> {
     throw new Error('Method not implemented.');
   }
+
+  bondExtra(address: string, amount: number): Promise<string> {
+    throw new Error('Method not implemented.');
+  }
+
+  claim(address: string): Promise<string> {
+    throw new Error('Method not implemented.');
+  }
 }
