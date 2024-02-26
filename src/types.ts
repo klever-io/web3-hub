@@ -22,6 +22,7 @@ export type Web3Window = {
   injectedWeb3: any
   cardano: any
   ic: any
+  kleverWeb: any
 } & Window & typeof globalThis
 
 export const web3Window = (window as Web3Window)
