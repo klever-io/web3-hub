@@ -25,6 +25,12 @@ export const Networks = {
     decimals: 8,
     minStakeAmount: 1, // TODO: Validate min stake amount
   },
+  klv: {
+    id: 5,
+    name: 'Klever',
+    decimals: 6,
+    minStakeAmount: 1, // TODO: Validate min stake amount
+  },
 }
 
 export enum Network {
@@ -32,6 +38,7 @@ export enum Network {
   KUSAMA = 'ksm',
   CARDANO = 'ada',
   INTERNET_COMPUTER = 'icp',
+  KLEVER = 'klv',
 }
 
 export type NetworkKey = keyof typeof Networks
