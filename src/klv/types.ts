@@ -1,9 +1,3 @@
-export enum Chain {
-  KLV = 1,
-  ETH = 4,
-  TRX = 2,
-}
-
 export interface KleverAccount {
   address: string
   chain: number
