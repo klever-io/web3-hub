@@ -1,4 +1,5 @@
 import type { CardanoProviderProps } from './ada/types'
+import type { KleverHub } from './klv/types'
 import type { NetworkKey } from './networks'
 import type { SubstrateProviderProps } from './substrate/types'
 
@@ -22,7 +23,7 @@ export type Web3Window = {
   injectedWeb3: any
   cardano: any
   ic: any
-  kleverWeb: any
+  kleverHub?: KleverHub
 } & Window & typeof globalThis
 
 export const web3Window = (window as Web3Window)

@@ -4,9 +4,9 @@ import { connect } from './connect';
 
 export class KleverProvider implements ProviderEntity {
   async connect(): Promise<Account[]> {
-    const principalAddress = await connect()
+    const account = await connect()
 
-    return [{ name: 'Principal Account', address: principalAddress }]
+    return [{ name: account.name, address: account.address }]
   }
 
   getBalance(address: string): Promise<Balance> {

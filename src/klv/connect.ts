@@ -1,18 +1,16 @@
 import { NotInjectedError } from '@/errors';
 import { NoAvailableAccountsError } from '@/errors/no-accounts-available-error';
 import { web3Window } from '@/types';
-import type { KleverAddress } from './types';
+import type { KleverAccount } from './types';
 
-export async function connect(): Promise<KleverAddress> {
-  if (!web3Window.kleverWeb)
+export async function connect(): Promise<KleverAccount> {
+  if (!web3Window.kleverHub)
     throw new NotInjectedError()
 
-  await web3Window.kleverWeb.initialize();
+  await web3Window.kleverHub.initialize();
 
-  const address = web3Window.kleverWeb.getWalletAddress();
-
-  if (!address)
+  if (!web3Window.kleverHub.account)
     throw new NoAvailableAccountsError()
 
-  return address
+  return web3Window.kleverHub.account
 }
