@@ -1,6 +1,8 @@
 import type { AvailableWallet } from './available-wallets';
 
-export type CardanoProviderProps = Record<AvailableWallet, any>;
+export interface CardanoProviderProps {
+  wallet?: AvailableWallet
+}
 
 export type CardanoUsedAddress = string
 
