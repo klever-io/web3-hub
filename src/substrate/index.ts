@@ -1,7 +1,11 @@
 import type { ProviderEntity } from '@/entities/provider-entity';
+import { InvalidNetworkError } from '@/errors/invalid-network-error';
 import type { Network } from '@/networks';
+import { Networks } from '@/networks';
 import type { Account, Address, Balance } from '@/types';
 import { ApiPromise, WsProvider } from '@polkadot/api';
+import { bondExtra } from './bond-extra';
+import { claim } from './claim';
 import { connect } from './connect';
 import { getBalance } from './get-balance';
 import { joinPool } from './join-pool';
@@ -17,6 +21,9 @@ export class SubstrateProvider implements ProviderEntity {
   rpcProvider: string
 
   constructor(network: Network, appName: string, rpcProvider: string) {
+    if (!Networks[network])
+      throw new InvalidNetworkError()
+
     this.network = network
     this.appName = appName
     this.rpcProvider = rpcProvider
@@ -60,5 +67,17 @@ export class SubstrateProvider implements ProviderEntity {
     const api = await this.createProvider()
 
     return joinPool(this.network, api, address, poolId, amount)
+  }
+
+  async bondExtra(address: string, amount: number): Promise<string> {
+    const api = await this.createProvider()
+
+    return bondExtra(this.network, api, address, amount)
+  }
+
+  async claim(address: string): Promise<string> {
+    const api = await this.createProvider()
+
+    return claim(api, address)
   }
 }

@@ -3,6 +3,7 @@ import type { NetworkKey } from './networks'
 import type { SubstrateProviderProps } from './substrate/types'
 
 export type Address = string
+export type Hash = string
 
 export interface Account {
   name?: string
@@ -18,8 +19,9 @@ export type ProviderBuilderProps<T extends NetworkKey> = T extends 'dot' | 'ksm'
 
 // TODO: Add type and functions of injected providers
 export type Web3Window = {
-  injectedWeb3: any
+  injectedWeb3?: any
   cardano?: any
+  ic?: any
 } & Window & typeof globalThis
 
 export const web3Window = (window as Web3Window)
