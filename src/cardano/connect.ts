@@ -18,13 +18,18 @@ export async function connect(wallet?: string): Promise<CardanoUsedAddress[]> {
   }
 
   if (typeof injectedWallet === 'undefined')
+    // maybe impossible to hit this branch since Cardano API demands a wallet in the browser to be injected.
     throw new NoProviderAvailableError()
 
-  const api = await web3Window.cardano[injectedWallet].enable()
-
-  const usedAddresses: CardanoUsedAddress[] = await api.getUsedAddresses()
-  if (usedAddresses.length === 0)
-    throw new NoAvailableAccountsError()
-
-  return usedAddresses
+  try {
+    const api = await web3Window.cardano[injectedWallet].enable()
+    const usedAddresses: CardanoUsedAddress[] = await api.getUsedAddresses()
+    if (usedAddresses.length === 0)
+      throw new NoAvailableAccountsError()
+    return usedAddresses
+  }
+  catch (error) {
+    console.log(error)
+    return []
+  }
 }
