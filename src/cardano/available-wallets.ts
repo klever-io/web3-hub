@@ -1,5 +1,5 @@
 // TODO: Add klever mobile app source name
-export const availableWallets = ['begin', 'eternl', 'flint ', 'gerowallet ', 'lace', 'nami', 'nufi', 'raywallet', 'yoroi'] as const
+export const availableWallets = ['begin', 'eternl', 'flint', 'gerowallet', 'lace', 'nami', 'nufi', 'raywallet', 'yoroi'] as const
 
 export type AvailableWallet = typeof availableWallets[number]
 

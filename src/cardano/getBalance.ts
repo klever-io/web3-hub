@@ -11,7 +11,7 @@ export async function getBalance(api: ApiPromise, address: string): Promise<Bala
     const accountBalance = await api.getBalance(address)
     return {
       free: accountBalance,
-      frozen: 0, // asset staking never gets "locked" in Cardano Network
+      frozen: 0, // asset staking never gets "frozen" or "locked" in Cardano Network
     }
   }
   catch (error) {

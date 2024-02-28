@@ -1,5 +1,5 @@
-import { CardanoProvider } from './ada';
-import type { CardanoProviderProps } from './ada/types';
+import { CardanoProvider } from './cardano';
+import type { CardanoProviderProps } from './cardano/types';
 import type { ProviderEntity } from './entities/provider-entity';
 import { InvalidNetworkError } from './errors/invalid-network-error';
 import type { NetworkData, NetworkKey } from './networks';
