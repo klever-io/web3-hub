@@ -25,7 +25,7 @@ describe('Connect wallet use case', () => {
   })
 
   it('should be able to throw error when have no providers', async () => {
-    web3Window.cardano = {}
+    delete web3Window.cardano.yoroi
     await expect(connect()).rejects.toThrow(NoProviderAvailableError)
   })
 })
