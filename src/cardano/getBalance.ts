@@ -3,7 +3,6 @@ import type { ApiPromise } from './types';
 import type { Balance } from '@/types';
 
 export async function getBalance(api: ApiPromise): Promise<Balance> {
-
   try {
     const accountBalance = await api.getBalance()
     return {

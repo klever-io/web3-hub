@@ -21,7 +21,7 @@ describe('Get balance use case', () => {
     await expect(getBalance(cardanoMockedInvalidAPI)).rejects.toThrow(BalanceFetchError)
   })
 
-  it('shoud be able to return mocked free balance', async () => {
+  it('should be able to return mocked free balance', async () => {
     const balance = await getBalance(cardanoMockedAPI)
     expect(balance.free).toEqual('00')
   })
