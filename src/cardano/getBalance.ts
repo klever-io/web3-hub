@@ -1,17 +1,14 @@
 import { BalanceFetchError } from '@/errors/balance-fetch-error';
-import { EmptyAddressError } from '@/errors/empty-address-error';
 import type { ApiPromise } from './types';
 import type { Balance } from '@/types';
 
-export async function getBalance(api: ApiPromise, address: string): Promise<Balance> {
-  if (address.length === 0)
-    throw new EmptyAddressError()
+export async function getBalance(api: ApiPromise): Promise<Balance> {
 
   try {
-    const accountBalance = await api.getBalance(address)
+    const accountBalance = await api.getBalance()
     return {
       free: accountBalance,
-      frozen: 0, // asset staking never gets "frozen" or "locked" in Cardano Network
+      frozen: '00', // asset staking never gets "frozen" or "locked" in Cardano Network
     }
   }
   catch (error) {
