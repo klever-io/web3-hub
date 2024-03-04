@@ -1,4 +1,4 @@
-import type { CardanoProviderProps } from './ada/types'
+import type { CardanoProviderProps } from './cardano/types'
 import type { NetworkKey } from './networks'
 import type { SubstrateProviderProps } from './substrate/types'
 
@@ -20,7 +20,7 @@ export type ProviderBuilderProps<T extends NetworkKey> = T extends 'dot' | 'ksm'
 // TODO: Add type and functions of injected providers
 export type Web3Window = {
   injectedWeb3: any
-  cardano: any
+  cardano?: any
   ic: any
 } & Window & typeof globalThis
 
