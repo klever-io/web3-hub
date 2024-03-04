@@ -3,9 +3,9 @@ import { NoAvailableAccountsError } from '@/errors/no-accounts-available-error';
 import { NoProviderAvailableError } from '@/errors/no-provider-available-error';
 import { web3Window } from '@/types';
 import { availableWallets } from './available-wallets';
-import type { CardanoUsedAddress } from './types';
+import type { CardanoUnusedAddresses } from './types';
 
-export async function connect(wallet?: string): Promise<CardanoUsedAddress[]> {
+export async function connect(wallet?: string): Promise<CardanoUnusedAddresses[]> {
   if (!web3Window.cardano)
     throw new NotInjectedError()
 
@@ -23,13 +23,13 @@ export async function connect(wallet?: string): Promise<CardanoUsedAddress[]> {
 
   try {
     const api = await web3Window.cardano[injectedWallet].enable()
-    const usedAddresses: CardanoUsedAddress[] = await api.getUsedAddresses()
-    if (usedAddresses.length === 0)
+    const unusedAddresses: CardanoUnusedAddresses[] = await api.getUnusedAddresses()
+    if (unusedAddresses.length === 0)
       throw new NoAvailableAccountsError()
-    return usedAddresses
+    return unusedAddresses
   }
   catch (error) {
-    console.log(error)
+    console.error(error)
     return []
   }
 }
