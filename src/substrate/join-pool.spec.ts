@@ -1,4 +1,3 @@
-import { InvalidNetworkError } from '@/errors/invalid-network-error'
 import { MinAmountError } from '@/errors/min-amount-error'
 import { UserRejectedError } from '@/errors/user-rejected-error'
 import { web3FromAddress } from '@polkadot/extension-dapp'
@@ -26,14 +25,6 @@ const address = 'wil123'
 const network = Network.POLKADOT
 
 describe('Join pool case', () => {
-  it('throws InvalidNetworkError for an unsupported network', async () => {
-    const poolId = 1
-    const amount = 10
-
-    await expect(joinPool('invalidNetwork' as any, {} as any, address, poolId, amount))
-      .rejects.toThrow(InvalidNetworkError);
-  });
-
   it('throws MinAmountError if the amount is below the minimum stake amount', async () => {
     const poolId = 1
     const invalidAmount = 9

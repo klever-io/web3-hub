@@ -2,6 +2,7 @@ import { CardanoProvider } from './cardano';
 import type { CardanoProviderProps } from './cardano/types';
 import type { ProviderEntity } from './entities/provider-entity';
 import { InvalidNetworkError } from './errors/invalid-network-error';
+import { InternetComputerProvider } from './icp';
 import type { NetworkData, NetworkKey } from './networks';
 import { getNetworkKeyById, isValidNetwork } from './networks';
 import { PolkadotProvider } from './substrate/dot';
@@ -33,6 +34,8 @@ export class Web3Provider {
         return new KusamaProvider(props as SubstrateProviderProps)
       case 'ada':
         return new CardanoProvider(props as CardanoProviderProps)
+      case 'icp':
+        return new InternetComputerProvider()
       default:
         throw new InvalidNetworkError()
     }

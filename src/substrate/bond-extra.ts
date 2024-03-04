@@ -1,18 +1,17 @@
-import { MinAmountError } from '@/errors/min-amount-error';
 import { UserRejectedError } from '@/errors/user-rejected-error';
 import type { Network } from '@/networks';
 import { Networks } from '@/networks';
+import type { Address } from '@/types';
 import type { ApiPromise } from '@polkadot/api';
 import { web3FromAddress } from '@polkadot/extension-dapp';
 
-export async function joinPool(network: Network, api: ApiPromise, address: string, poolId: number, amount: number) {
+export async function bondExtra(network: Network, api: ApiPromise, address: Address, amount: number) {
   try {
-    if (amount < Networks[network].minStakeAmount)
-      throw new MinAmountError()
-
     const precision = Networks[network].decimals
     const injector = await web3FromAddress(address)
-    const tx = await api.tx.nominationPools.join(amount * 10 ** precision, poolId)
+    const tx = api.tx.nominationPools.bondExtra({
+      FreeBalance: amount * 10 ** precision,
+    });
     const signer = { signer: injector.signer }
 
     const hash = await tx.signAndSend(address, signer)
